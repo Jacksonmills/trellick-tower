@@ -1,7 +1,8 @@
 {
-  "name": "t3-future",
+  "name": "trellick-tower",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -22,6 +23,7 @@
     "eslint-config-next": "13.4.4",
     "next": "13.4.8",
     "postcss": "8.4.24",
+    "puppeteer": "^20.8.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",

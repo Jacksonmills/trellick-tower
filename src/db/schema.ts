@@ -2,23 +2,13 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import {
+  json,
   mysqlTable,
   serial,
+  text,
   uniqueIndex,
   varchar,
 } from "drizzle-orm/mysql-core";
-
-// declaring enum in database
-export const randomNumber = mysqlTable(
-  "random_numbers",
-  {
-    id: serial("id").primaryKey(),
-    number: varchar("number", { length: 256 }),
-  },
-  (randomNumber) => ({
-    numberIndex: uniqueIndex("number_idx").on(randomNumber.number),
-  })
-);
 
 // users
 export const user = mysqlTable(
@@ -32,12 +22,16 @@ export const user = mysqlTable(
   })
 );
 
-// posts
-export const post = mysqlTable(
-  "posts",
+// scraped_data
+export const scrapedData = mysqlTable(
+  "scraped_data",
   {
     id: serial("id").primaryKey(),
-    user_id: varchar("user_id", { length: 256 }),
-    content: varchar("content", { length: 256 }),
-  }
+    url: text("url"),
+    imageUrls: json("imageUrls"),
+    textContent: text("textContent"),
+  },
+  (scrapedData) => ({
+    urlIndex: uniqueIndex("url_idx").on(scrapedData.url),
+  }),
 );
